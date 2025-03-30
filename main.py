@@ -253,10 +253,14 @@ def process_outlets_to_message(outlets: dict) -> dict:
     return {"message": message}
 
 
-
-# Entry point for running the application
+# Define a function to run the FastAPI application
+# This function is called when the script is run directly
 if __name__ == "__main__":
-  import uvicorn
+    import uvicorn
+    import os
 
-  # Run the FastAPI application using Uvicorn server
-  uvicorn.run(app, host="127.0.0.1", port=8000)
+    # Get host and port from environment variables (default to 0.0.0.0:8000 for deployment)
+    host = os.getenv("HOST", "127.0.0.1")
+    port = int(os.getenv("PORT", 8000))
+
+    uvicorn.run(app, host=host, port=port)

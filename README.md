@@ -20,13 +20,13 @@ This is the backend service for the Mindhive Assessment project, built using Fas
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/your-repo/mindhive-assessment-backend.git
+git clone https://github.com/Falachi/McMapAPI.git
 ```
 
 2. Navigate to the project directory:
 
 ```bash
-cd mindhive-assessment-backend
+cd McMapAPI
 ```
 
 3. Create and activate a virtual environment:

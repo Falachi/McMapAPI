@@ -5,8 +5,14 @@ import spacy
 import sqlite3
 import os
 
-# Create an instance of the FastAPI application
-app = FastAPI()
+development = os.getenv("DEVELOPMENT", "False").lower() == "true"  # Check if in development mode
+
+# Initialize FastAPI application with custom documentation URLs based on environment
+app = FastAPI(
+    docs_url="/docs" if development else None,
+    redoc_url="/redoc" if development else None,
+    openapi_url="/openapi.json" if development else None
+)
 
 # Load spaCy NLP model (small English model for efficiency)
 nlp = spacy.load("en_core_web_sm")

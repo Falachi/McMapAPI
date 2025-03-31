@@ -200,7 +200,7 @@ def get_outlet_services(outlet_id: int) -> dict:
   # Return the outlet ID and its services as a JSON response
   return {"outlet_id": outlet_id, "services": services}
 
-# Define a route to fetch the menu of a specific outlet
+# Define a route to fetch information relating to the user's query.
 # Currently using rule-based. Need to implement a more advanced NLP model for better understanding of queries
 @app.get("/chatbot/query")
 def chatbot_query(query: str) -> dict:

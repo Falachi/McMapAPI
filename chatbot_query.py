@@ -27,7 +27,7 @@ STREET_PREFIXES = ["jalan", "jl", "st", "street", "persiaran", "lorong", "lebuhr
 
 def get_cleaned_locations():
     """Extracts cleaned locations (without street-type words) from database."""
-    with sqlite3.connect("../mcd_outlets.db") as conn:
+    with sqlite3.connect("mcd_outlets.db") as conn:
         cursor = conn.cursor()
         cursor.execute("SELECT DISTINCT address FROM outlets")
         addresses = [row[0] for row in cursor.fetchall()]

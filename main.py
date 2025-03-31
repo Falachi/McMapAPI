@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from chatbot_query import extract_category, extract_location, preprocess_query
 import spacy
 import sqlite3
+import os
 
 # Create an instance of the FastAPI application
 app = FastAPI()
@@ -10,14 +11,17 @@ app = FastAPI()
 # Load spaCy NLP model (small English model for efficiency)
 nlp = spacy.load("en_core_web_sm")
 
+# Read allowed origin from .env
+allowed_origin = os.getenv("ALLOWED_ORIGIN", "*")  # Default to "*" if not set
+
 # Configure CORS (Cross-Origin Resource Sharing) middleware
 # This allows the frontend application to communicate with the backend API through localhost
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],  # Allow your frontend's URL
+    allow_origins=[allowed_origin], # Read from .env
     allow_credentials=True,
-    allow_methods=["*"],  # Allow all HTTP methods (GET, POST, etc.)
-    allow_headers=["*"],  # Allow all headers
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 db_dir = "mcd_outlets.db"

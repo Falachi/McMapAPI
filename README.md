@@ -42,6 +42,10 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
+5. Create a `.env` folder and put in the allowed origin URL.
+```
+ALLOWED_ORIGIN={YOUR URL HERE}
+```
 ## Usage
 
 1. Start the development server:
